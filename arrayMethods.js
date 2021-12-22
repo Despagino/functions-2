@@ -18,7 +18,9 @@ const mixedNumbers = [6,3,1,7,5,2,6,8,9,4,2,7,9,3,1,8,4,3];
 */
 
 // CODE HERE
-const evenNumbers // = mixedNumbers.filter(/* Provide Your Callback Here */)
+const evenNumbers = mixedNumbers.filter(num => num % 2 == 0)
+
+console.log(evenNumbers)
 
 
 
@@ -38,10 +40,8 @@ const prices = [15.00, 23.00, 78.00, 34.00, 12.00, 86.00, 12.00, 79.00, 32.00];
   (element, index, wholeArray)=>{}    Arrow Form
 */
 
-// CODE HERE
-const postTaxPrices // = prices.map(/* Provide Your Callback Here );
-
-
+ const postTaxPrices = prices.map(postTaxPrice => postTaxPrice * 1.07 )
+ console.log(postTaxPrices)
 
 ////////// PROBLEM 3 //////////
 
@@ -56,8 +56,8 @@ const populations = [8175133, 3792621, 2695598, 2100263];
   (runningTotal, curElement, curIndex, wholeArray)=>{} Arrow Form
 */
 
-// CODE HERE
-const totalPopulation //  = populations.reduce(/* Provide Your Callback Here */)
+
+// const totalPopulation = populations.reduce()
 
 
 
@@ -81,10 +81,12 @@ const monstersInYourPocket = [{"monster":"Bulbabunny","CP":156},{"monster":"Bulb
   Use the filter method to return only the monsters that have a CP of over 200.
 */
 
-// CODE HERE
-const myStrongest // = monstersInYourPocket.filter(/* Provide Your Callback Here */)
 
+const myStrongest = monstersInYourPocket.filter(monster => monster.CP > 200)
 
+for (let mon of myStrongest) {
+  console.log(mon.monster)
+}
 
 ////////// PROBLEM 5 //////////
 
@@ -99,9 +101,13 @@ const orders = [{"price":15,"tax":0.09},{"price":42,"tax":0.07},{"price":56,"tax
   Use a higher order method to get all the order totals after adding in the sales tax (given to you as a tax rate, hint: you'll need to do some multiplication). Your answer should be an array of numbers, one total for each order.
 */
 
-// CODE HERE
 
+let orderTotal = orders.map(order => {
+  let toSubtract = order.price * order.tax
+  return order.price - toSubtract
+})
 
+console.log(orderTotal)
 
 ////////// PROBLEM 6 //////////
 
@@ -119,4 +125,9 @@ const purchases = [{"owner":"Barry","price":103},{"owner":"Bob","price":75},
   Use a high order method(s) to create to get the sum of bobsTotal.
 */
 
-// CODE HERE
+let bobsTotal = purchases.filter(bob =>
+  bob.owner === "Bob"
+).reduce((a, c) => a + c.price, 0)
+
+
+console.log(bobsTotal)
